@@ -7,7 +7,7 @@ const abi = [
   "function registerDiploma(bytes32 diplomaHash, string memory studentName) external",
   "event DiplomaRegistered(bytes32 indexed diplomaHash, address indexed issuer)",
 ];
-const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
 // const TEST_DIPLOMA_DATA = {
 //   hash: "0x5fbdbe2315678afecb367f032d93f642f64180aa334343434343434343434343",
@@ -22,6 +22,8 @@ export default function DiplomaRegister() {
 
   const [studentName, setStudentName] = useState("");
   const [hash, setHash] = useState("");
+
+  if (!contractAddress) return null;
 
   const register = async () => {
     try {

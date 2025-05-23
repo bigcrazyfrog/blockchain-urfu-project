@@ -4,12 +4,15 @@ import { useState } from "react";
 import { ethers } from "ethers";
 
 const abi = ["function verifyDiploma(bytes32 diplomaHash) view returns (bool)"];
-const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
+const rpcUrl = process.env.NEXT_PUBLIC_RPC_URL;
 
 export default function VerifyDiploma() {
   const [hash, setHash] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  if (!contractAddress) return null;
 
   const register = async () => {
     try {
@@ -17,7 +20,7 @@ export default function VerifyDiploma() {
       setError(null);
       setIsSuccess(false);
 
-      const provider = new ethers.JsonRpcProvider("http://localhost:8545");
+      const provider = new ethers.JsonRpcProvider(rpcUrl);
 
       console.log("Подключаемся к контракту");
       const contract = new ethers.Contract(contractAddress, abi, provider);

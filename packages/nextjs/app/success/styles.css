@@ -1,0 +1,119 @@
+:root {
+    --primary: #4361ee;
+    --primary-hover: #3a56d4;
+    --text: #2b2d42;
+    --text-light: #8d99ae;
+    --background: #ffffff; /* Изменено на белый */
+    --card-bg: #ffffff;
+    --border: #e9ecef;
+    --border-radius: 12px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background); /* Теперь будет белым */
+    color: var(--text);
+    line-height: 1.5;
+    padding: 20px;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+/* Success Card */
+.success-card {
+    text-align: center;
+    padding: 48px 40px;
+  }
+  
+  .success-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 24px;
+    background-color: #ecfdf5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .success-icon svg {
+    width: 36px;
+    height: 36px;
+    fill: #10b981;
+  }
+  
+  .success-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #111827;
+  }
+  
+  .success-text {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 32px;
+  }
+  
+  .success-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .success-link:hover {
+    text-decoration: underline;
+  }
+  
+  .success-actions {
+    margin-top: 32px;
+  }
+  
+  .success-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .success-btn:hover {
+    background-color: #2563eb;
+  }
+  
+  .home-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+  
+  /* Анимация успеха */
+  @keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  .success-card {
+    animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 640px) {
+    .success-card {
+      padding: 32px 24px;
+    }
+    
+    .success-title {
+      font-size: 20px;
+    }
+    
+    .success-text {
+      font-size: 14px;
+    }
+  }

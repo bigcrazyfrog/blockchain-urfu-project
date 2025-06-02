@@ -1,0 +1,295 @@
+:root {
+  --primary: #4361ee;
+  --primary-hover: #3a56d4;
+  --text: #2b2d42;
+  --text-light: #8d99ae;
+  --background: #f8f9fa;
+  --card-bg: #ffffff;
+  --border: #e9ecef;
+  --border-radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.5;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 40px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.form-input {
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+}
+
+.form-input::placeholder {
+  color: var(--text-light);
+}
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: var(--background);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.file-label:hover {
+  background-color: #f1f3f5;
+  border-color: var(--primary);
+}
+
+.file-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--primary);
+}
+
+.file-name {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+.submit-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 8px;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 24px;
+  }
+  
+  .title {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Для ошибок */
+
+.error-container {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.error-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.error-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: #dc2626;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* для данных диплома */
+
+/* Diploma Info Styles */
+/* Diploma Info Styles */
+.diploma-container {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.diploma-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.diploma-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.diploma-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.diploma-status.verified {
+  background-color: #ecfdf5;
+  color: #10b981;
+}
+
+.status-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.diploma-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.detail-label {
+  color: var(--text-light);
+  font-size: 14px;
+  flex: 0 0 40%;
+}
+
+.detail-value {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  text-align: right;
+  flex: 0 0 60%;
+  word-break: break-word;
+}
+
+.diploma-code {
+  font-family: 'Courier New', monospace;
+  color: var(--primary);
+  background-color: #f5f8ff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптивность */
+@media (max-width: 640px) {
+  .diploma-container {
+    padding: 24px;
+  }
+  
+  .detail-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .detail-label,
+  .detail-value {
+    flex: 1;
+    text-align: left;
+  }
+}

@@ -13,9 +13,7 @@ const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
 export default function DiplomaRegister() {
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [txHash, setTxHash] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>("");
   const router = useRouter();
 
@@ -29,8 +27,6 @@ export default function DiplomaRegister() {
       console.log("Регистрация диплома...");
       setIsLoading(true);
       setError(null);
-      setIsSuccess(false);
-      setTxHash(null);
 
       if (!window.ethereum) {
         throw new Error("MetaMask не установлен");
@@ -46,13 +42,11 @@ export default function DiplomaRegister() {
       const tx = await contract.registerDiploma(hash, studentName);
 
       console.log("Транзакция отправлена, хэш:", tx.hash);
-      setTxHash(tx.hash);
 
       console.log("Ожидаем подтверждения...");
       await tx.wait();
 
       console.log("Диплом успешно зарегистрирован");
-      setIsSuccess(true);
 
       router.push("/success");
     } catch (err: any) {
@@ -76,7 +70,7 @@ export default function DiplomaRegister() {
       const arrayBuffer = await file.arrayBuffer();
       const bytes = new Uint8Array(arrayBuffer);
       const fileHash = keccak256(bytes);
-      console.log("📄 PDF-хэш:", fileHash);
+      console.log("PDF-хэш:", fileHash);
       setHash(fileHash);
     } catch (err) {
       console.error("Ошибка при чтении файла:", err);
@@ -143,12 +137,6 @@ export default function DiplomaRegister() {
           {isLoading ? "Регистрация..." : "Зарегистрировать диплом"}
         </button>
       </div>
-      {isSuccess && (
-        <div style={{ marginTop: "20px", color: "green" }}>
-          <p>✅ Диплом успешно зарегистрирован!</p>
-          {txHash && <p>Хэш транзакции: {txHash}</p>}
-        </div>
-      )}
       {error != null && (
         <div className="error-container" id="error-container">
           <div className="error-content">
